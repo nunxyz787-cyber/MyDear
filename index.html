@@ -90,65 +90,37 @@ footer{text-align:center;padding:35px 20px;background:#0008;color:#bda5b1}footer
  <p style="margin-top:22px;font-size:23px;color:#ff9fc5">Happy Birthday and Happy 3rd Annivarsary, My Beautiful Wife! 🎂❤️</p></div></div>
 </div></section>
 
-<section class="final"><div class="content"><div style="font-size:75px">💖</div><h1>Happy Birthday<br>Jenu Baby</h1>
-    <p>May your birthday be as beautiful as your smile, as warm as your heart and as wonderful as the love you have brought into my life.</p>
-    <p style="color:#ff9fc5;font-size:25px">💖 HUM TUMHARE SANAM 💖</p>
-    <button class="btn" onclick="celebrate()">Celebrate</button>
-  </div></section>
+<section class="final"><div class="content"><div style="font-size:75px">❤️</div><h1>Happy Birthday<br>Jenu Darling</h1>
+ <p>May your birthday be as beautiful as your smile, as warm as your heart and as wonderful as the love you have brought into my life.</p>
+ <p style="color:#ff9fc5;font-size:25px">💋 HUM TUMHARE HE SANAM 💋</p><button class="btn" onclick="celebrate()">🎆 Celebrate Your Birthday 🎆</button><p style="margin-top:45px;color:#ffabc9">Forever & Always ❤️</p>
+</div></section>
 
-  <footer>Made especially for <strong>Jen Ki Jenu</strong> with ❤️<br><br>Our Love Story by Ur Beutiful Husband</footer>
+<footer>Made especially for <strong>Jen Ni Jenu</strong> with ❤️<br><br>Our Love Story by Ur Beutiful Husband</footer>
+<script>
+window.addEventListener("load",()=>setTimeout(()=>document.getElementById("loader").classList.add("hide"),3000));
+function updateCountdown(){const now=new Date();let y=now.getFullYear(),b=new Date(y,8,18);if(b<=now)b=new Date(y+1,8,18);let d=b-now;document.getElementById("days").textContent=String(Math.floor(d/86400000)).padStart(2,"0");document.getElementById("hours").textContent=String(Math.floor(d/3600000)%24).padStart(2,"0");document.getElementById("minutes").textContent=String(Math.floor(d/60000)%60).padStart(2,"0");document.getElementById("seconds").textContent=String(Math.floor(d/1000)%60).padStart(2,"0")}setInterval(updateCountdown,1000);updateCountdown();
+function toggleMenu(){document.getElementById("mobileMenu").classList.toggle("open")}function closeMenu(){document.getElementById("mobileMenu").classList.remove("open")}
+function createHeart(){let h=document.createElement("div");h.className="heart";h.innerHTML=["❤️","💕","💖","💗","💘","💝","🌹"][Math.floor(Math.random()*7)];h.style.left=Math.random()*100+"vw";h.style.fontSize=15+Math.random()*30+"px";h.style.animationDuration=5+Math.random()*7+"s";document.body.appendChild(h);setTimeout(()=>h.remove(),13000)}setInterval(createHeart,1200);
+function openSurprise(){document.getElementById("hiddenMessage").classList.add("show");for(let i=0;i<40;i++)setTimeout(createHeart,i*80);celebrate()}
+function celebrate(){let c=["#ff4081","#ffeb3b","#00e5ff","#fff","#ba68c8","#ff9800"];for(let i=0;i<80;i++)setTimeout(()=>{let f=document.createElement("div");f.className="firework";f.style.left=10+Math.random()*80+"vw";f.style.top=10+Math.random()*65+"vh";f.style.background=c[Math.floor(Math.random()*c.length)];document.body.appendChild(f);setTimeout(()=>f.remove(),1200)},i*35)}
 
-  <script>
-    window.addEventListener("load", () => setTimeout(() => {
-      const loader = document.getElementById("loader");
-      if (loader) loader.classList.add("hide");
-    }, 3000));
 
-    function updateCountdown() {
-      const now = new Date();
-      let y = now.getFullYear(), b = new Date(y, 8, 18);
-      if (b <= now) b = new Date(y + 1, 8, 18);
-    }
+// Start the romantic music automatically as soon as the page opens.
+// If the browser blocks audible autoplay, the same audio starts on the first
+// normal interaction without showing any music button.
+function startRomanticMusic() {
+  romanticMusic.play().catch(() => {});
+}
+window.addEventListener("load", () => {
+  startRomanticMusic();
+  setTimeout(startRomanticMusic, 500);
+  setTimeout(startRomanticMusic, 1500);
+});
+["pointerdown","touchstart","keydown","click"].forEach(ev =>
+  document.addEventListener(ev, startRomanticMusic, { once:true, passive:true })
+);
 
-    function toggleMenu() { 
-      const menu = document.getElementById("mobileMenu");
-      if (menu) menu.classList.toggle("open"); 
-    }
-    
-    function closeMenu() { 
-      const menu = document.getElementById("mobileMenu");
-      if (menu) menu.classList.remove("open"); 
-    }
-
-    function createHeart() {
-      let h = document.createElement("div");
-      h.className = "heart";
-      h.innerHTML = ["💖", "💕", "💗", "💓", "💘"][Math.floor(Math.random() * 5)];
-      document.body.appendChild(h);
-      setTimeout(() => h.remove(), 2000);
-    }
-
-    function openSurprise() {
-      const msg = document.getElementById("hiddenMessage");
-      if (msg) msg.classList.add("show");
-      for (let i = 0; i < 40; i++) setTimeout(createHeart, i * 80);
-    }
-
-    function celebrate() {
-      for (let i = 0; i < 80; i++) setTimeout(createHeart, i * 50);
-    }
-
-    document.addEventListener("click", (e) => {
-      if (e.target.tagName === "BUTTON" || e.target.tagName === "A") return;
-      let h = document.createElement("div");
-      h.className = "heart";
-      h.innerHTML = "❤️";
-      h.style.position = "fixed";
-      h.style.left = e.clientX + "px";
-      h.style.top = e.clientY + "px";
-      document.body.appendChild(h);
-      setTimeout(() => h.remove(), 1000);
-    });
-  </script>
+document.addEventListener("click",e=>{if(e.target.tagName==="BUTTON"||e.target.tagName==="A")return;let h=document.createElement("div");h.textContent="❤️";h.style.cssText=`position:fixed;left:${e.clientX}px;top:${e.clientY}px;font-size:25px;pointer-events:none;z-index:5000;animation:float 2s linear forwards`;document.body.appendChild(h);setTimeout(()=>h.remove(),2000)});
+</script>
 </body>
 </html>
